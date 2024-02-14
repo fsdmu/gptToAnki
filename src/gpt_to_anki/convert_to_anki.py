@@ -1,7 +1,11 @@
 """Contains the ConvertToAnki class."""
+from pathlib import Path
+from typing import Union
+
 
 class ConvertToAnki:
     """Convert a given question and answer to an Anki readable format."""
+
     def __init__(self, separator: str = ";", is_html: bool = True):
         """Sets the default parameters given by the user."""
         self.separator = separator
@@ -24,3 +28,21 @@ class ConvertToAnki:
         :returns: None
         """
         self.file_content += f"{deck}{self.separator}{front}{self.separator}{back}\n"
+
+    def output_to_file(self, path: Union[str, Path]) -> None:
+        """
+                Write the output of your class to a file.
+                :param path: The path to the file or directory where the output should be written.
+                    If a directory path is provided, a file named 'output.txt' will be created inside that directory.
+                :raises ValueError: If the file already exists.
+                :return: None
+        """
+        path = Path(path)
+        if path.suffix == "":
+            path = path / "output.txt"
+        if path.is_file():
+            raise ValueError("The given path leads to an existing file.")
+        path.parent.mkdir(exist_ok=True)
+
+        with path.open("w", encoding="utf-8") as f:
+            f.write(self.file_content)
