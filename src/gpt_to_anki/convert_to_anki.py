@@ -1,6 +1,9 @@
+"""Contains the ConvertToAnki class."""
+
 class ConvertToAnki:
     """Convert a given question and answer to an Anki readable format."""
     def __init__(self, separator: str = ";", is_html: bool = True):
+        """Sets the default parameters given by the user."""
         self.separator = separator
         self.is_html = is_html
         self.file_content = ""
