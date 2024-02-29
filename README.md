@@ -1,3 +1,6 @@
 # gptToAnki
 
-This tool will consist of mainly 3 parts. The first tool will prompt the llm on indexed files and ask it to generate outlines, chapters etc. The second tool will use these to create questions and answers relevant to the topic. The third tool will take these questions and answers to automatically create anki cards from them. 
+This project aims to automatically create anki cards using the capabilities of llm. 
+We achieve this by using the tool gpt4all for their indexing capabilities.
+The goal is to upload all files provided by a class in your university index it using gpt4all and then querry a selected llm to create the anki cards.
+After the result of the llm is parsed, the anki parser converts them into a anki-readable format.
